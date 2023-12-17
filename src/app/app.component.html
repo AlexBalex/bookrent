@@ -1,4 +1,16 @@
-<div>
-  <h1>Welcome to Bookrent</h1>
-  <button routerLink="/book-list">Book List</button>
+<!-- app.component.html -->
+<div class="welcome-container">
+  <h1>Welcome to Bookrent!</h1>
+  <!-- Replace the button with a search bar -->
+  <input #searchInput type="text" placeholder="Search books..." (keyup.enter)="searchBooks(searchInput.value)">
+</div>
+
+<div class="new-releases-container">
+  <h2>New Releases</h2>
+  <!-- Display squares for new book releases -->
+  <div class="new-releases-list">
+    <div *ngFor="let release of newReleases" class="book-release" (click)="showBookDetails(release)">
+      <img [src]="release.image" alt="{{ release.title }}" />
+    </div>
+  </div>
 </div>

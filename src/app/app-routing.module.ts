@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: 'home', component: AppComponent },
-  { path: 'book-list', component: BookListComponent },
+  { path: 'book-list/:filter', component: BookListComponent },
   { path: 'book-description', component: BookDescriptionComponent },
 
   {path: '', redirectTo: '/home', pathMatch: 'full'}
