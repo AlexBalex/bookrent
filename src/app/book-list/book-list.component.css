@@ -1,0 +1,8 @@
+/* book-list.component.css */
+div {
+    margin-bottom: 15px;
+  }
+  
+  input, button {
+    margin-right: 5px;
+  }
