@@ -1,14 +1,14 @@
 <div>
   <h2>Book List</h2>
 
-  <!-- Search bar and Back button -->
+  <!-- search bar and back button -->
   <div>
     <input type="text" placeholder="Search books..." [(ngModel)]="searchTerm" (keyup.enter)="search()" />
     <button (click)="search()">Search</button>
     <button (click)="goBack()">Back</button>
   </div>
 
-  <!-- Display the filtered book list -->
+  <!-- filtered book list -->
   <div *ngFor="let book of filteredBooks">
     <p style="font-size: 18px; font-weight: bold;">
       {{ book.title }} by {{ book.author }}
