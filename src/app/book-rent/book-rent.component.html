@@ -1,0 +1,26 @@
+<!-- book-rent.component.html -->
+<div class="book-rent-popup">
+    <h3>{{ book.title }}</h3>
+    <!-- Start Date Input -->
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" [(ngModel)]="startDate" />
+
+    <!-- End Date Input -->
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" [(ngModel)]="endDate" />
+
+    <!-- Buttons -->
+    <div class="button-container">
+        <!-- Display Message -->
+        <div *ngIf="availabilityMessage" class="message">{{ availabilityMessage }}</div>
+
+        <!-- Check Button -->
+        <button (click)="checkAvailability()">Check</button>
+
+        <!-- Rent Button -->
+        <button (click)="rentBook()">Rent</button>
+
+        <!-- Close Button -->
+        <button (click)="closeRentPopup()">Close</button>
+    </div>
+</div>

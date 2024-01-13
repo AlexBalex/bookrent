@@ -7,8 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { BookListComponent } from './book-list/book-list.component';
 import { RootComponent } from './root/root.component';
 import { BookDescriptionComponent } from './book-description/book-description.component';
-import { BookSearchComponent } from './book-search/book-search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BookRentComponent } from './book-rent/book-rent.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BookListComponent,
     RootComponent,
     BookDescriptionComponent,
-    BookSearchComponent
+    BookRentComponent
   ],
   imports: [
     BrowserModule,

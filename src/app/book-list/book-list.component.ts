@@ -10,6 +10,8 @@ import { BookDescriptionComponent } from '../book-description/book-description.c
 })
 export class BookListComponent {
   searchTerm: string = '';
+  isRentPopupOpen = false;
+  selectedBook: any | null = null;
   books: any[] = [
     {
       title: 'The Hobbit',
@@ -282,6 +284,10 @@ export class BookListComponent {
     this.router.navigate(['/home']);
   }
 
+  rentBook(book: any): void {
+    console.log(`Renting book: ${book.title}`);
+  }
+
   showBookDetails(book: any): void {
     this.dialog.open(BookDescriptionComponent, {
       data: {
@@ -293,5 +299,21 @@ export class BookListComponent {
         genre: book.genres,
       }
     });
+  }
+
+  openRentPopup(book: any): void {
+    this.isRentPopupOpen = true;
+    this.selectedBook = book;
+  }
+
+  closeRentPopup(): void {
+    console.log('Close button clicked V2');
+    this.isRentPopupOpen = false;
+    this.selectedBook = null;
+  }
+
+  checkAvailability(book: any, startDate: string, endDate: string): void {
+    // Implement your logic to check availability
+    console.log(`Checking availability for book ${book.title} from ${startDate} to ${endDate}`);
   }
 }
