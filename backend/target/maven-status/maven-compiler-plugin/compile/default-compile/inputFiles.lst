@@ -1,0 +1,11 @@
+/home/alex/UVT/bookrent/backend/src/main/java/com/bookrentapp/bookrent/dto/response/EmailDto.java
+/home/alex/UVT/bookrent/backend/src/main/java/com/bookrentapp/bookrent/services/UserService.java
+/home/alex/UVT/bookrent/backend/src/main/java/com/bookrentapp/bookrent/exceptions/WrongPasswordException.java
+/home/alex/UVT/bookrent/backend/src/main/java/com/bookrentapp/bookrent/utils/DataInitializer.java
+/home/alex/UVT/bookrent/backend/src/main/java/com/bookrentapp/bookrent/exceptions/UserNotFoundException.java
+/home/alex/UVT/bookrent/backend/src/main/java/com/bookrentapp/bookrent/controllers/AuthController.java
+/home/alex/UVT/bookrent/backend/src/main/java/com/bookrentapp/bookrent/utils/CorsConfig.java
+/home/alex/UVT/bookrent/backend/src/main/java/com/bookrentapp/bookrent/dto/request/LoginDto.java
+/home/alex/UVT/bookrent/backend/src/main/java/com/bookrentapp/bookrent/repositories/UserRepository.java
+/home/alex/UVT/bookrent/backend/src/main/java/com/bookrentapp/bookrent/entities/User.java
+/home/alex/UVT/bookrent/backend/src/main/java/com/bookrentapp/bookrent/BookrentApplication.java

@@ -1,0 +1,80 @@
+{
+  "hash": "d1b23c2e",
+  "browserHash": "7bb84dce",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "663ae996",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "bc84e8bb",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "b26ecc3e",
+      "needsInterop": false
+    },
+    "@angular/material/dialog": {
+      "src": "../../../../../node_modules/@angular/material/fesm2022/dialog.mjs",
+      "file": "@angular_material_dialog.js",
+      "fileHash": "c424b5ee",
+      "needsInterop": false
+    },
+    "@angular/material/snack-bar": {
+      "src": "../../../../../node_modules/@angular/material/fesm2022/snack-bar.mjs",
+      "file": "@angular_material_snack-bar.js",
+      "fileHash": "7ba63c43",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "47c81954",
+      "needsInterop": false
+    },
+    "@angular/platform-browser/animations": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/animations.mjs",
+      "file": "@angular_platform-browser_animations.js",
+      "fileHash": "cb770d49",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "f6106a62",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "781848d2",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-3XRPYQAV": {
+      "file": "chunk-3XRPYQAV.js"
+    },
+    "chunk-OM645ARE": {
+      "file": "chunk-OM645ARE.js"
+    },
+    "chunk-JER2JFMJ": {
+      "file": "chunk-JER2JFMJ.js"
+    },
+    "chunk-K6FK3NNC": {
+      "file": "chunk-K6FK3NNC.js"
+    },
+    "chunk-4MC5AYLF": {
+      "file": "chunk-4MC5AYLF.js"
+    },
+    "chunk-R5MLLIO3": {
+      "file": "chunk-R5MLLIO3.js"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<!-- app.component.html -->
+
+
+<div *ngIf="!isLoggedIn()">
+  <!-- show register button when not logged in -->
+  <button routerLink="/authentification" [queryParams]="{ action: 'register' }">Register</button>
+  <!-- Show login button when not logged in -->
+  <button (click)="navigateToLogin()">Login</button>
+</div>
+<div *ngIf="isLoggedIn()">
+  <!-- Show logout button when logged in -->
+  <button (click)="logout()">Logout</button>
+</div>
+<div class="welcome-container">
+  <h1>Welcome to Bookrent!</h1>
+  <!-- search bar -->
+  <input #searchInput type="text" placeholder="Search books..." (keyup.enter)="searchBooks(searchInput.value)">
+</div>
+
+<div class="new-releases-container">
+  <h2>New Releases</h2>
+  <!-- book releases -->
+  <div class="new-releases-list">
+    <div *ngFor="let release of newReleases" class="book-release" (click)="showBookDetails(release)">
+      <img [src]="release.image" alt="{{ release.title }}" />
+    </div>
+  </div>
+</div>
