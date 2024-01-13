@@ -31,3 +31,11 @@
     max-height: 100%;
     object-fit: cover;
   }
+
+  /* home.component.css */
+  button {
+    top: 0;
+    right: 0;
+    margin-top: 10px; /* Adjust the margin as needed */
+    margin-right: 10px;
+  }

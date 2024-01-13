@@ -12,7 +12,9 @@
     <!-- Buttons -->
     <div class="button-container">
         <!-- Display Message -->
-        <div *ngIf="availabilityMessage" class="message">{{ availabilityMessage }}</div>
+        <div *ngIf="availabilityMessage" [class.message]="true" [class.message-green]="isAvailabilityChecked" [class.message-red]="!isAvailabilityChecked">
+            {{ availabilityMessage }}
+        </div>
 
         <!-- Check Button -->
         <button (click)="checkAvailability()">Check</button>

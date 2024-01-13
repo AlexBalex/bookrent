@@ -1,0 +1,15 @@
+/* authentification.component.css */
+.form-group {
+    margin-bottom: 15px; /* Adjust the margin as needed */
+  }
+  
+  /* Additional styling if desired */
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input, button {
+    margin-top: 5px;
+  }
+  

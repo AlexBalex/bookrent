@@ -31,6 +31,10 @@ export class BookRentComponent {
 
       // Add your implementation for renting a book, such as updating book status, etc.
     }
+    else
+    {
+      this.availabilityMessage = 'Please press the check button first.';
+    }
   }
 
   closeRentPopup(): void {

@@ -1,4 +1,10 @@
 <!-- app.component.html -->
+<!-- Register Button -->
+<button routerLink="/authentification" [queryParams]="{ action: 'register' }">Register</button>
+
+<!-- Login Button -->
+<button routerLink="/authentification">Login</button>
+
 <div class="welcome-container">
   <h1>Welcome to Bookrent!</h1>
   <!-- search bar -->

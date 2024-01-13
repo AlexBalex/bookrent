@@ -9,6 +9,7 @@ import { RootComponent } from './root/root.component';
 import { BookDescriptionComponent } from './book-description/book-description.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookRentComponent } from './book-rent/book-rent.component';
+import { AuthentificationComponent } from './authentification/authentification.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BookRentComponent } from './book-rent/book-rent.component';
     BookListComponent,
     RootComponent,
     BookDescriptionComponent,
-    BookRentComponent
+    BookRentComponent,
+    AuthentificationComponent
   ],
   imports: [
     BrowserModule,

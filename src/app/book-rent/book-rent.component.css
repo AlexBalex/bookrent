@@ -37,11 +37,16 @@
     display: block; /* Display when the pop-up is open */
   }
   
-  .message {
-    color: red;
-    margin-top: 10px; /* Adjust the margin as needed */
+/* Style for green messages */
+.message-green {
+    color: green;
   }
   
+  /* Style for red messages */
+  .message-red {
+    color: red;
+  }
+
   /* Optional: Style the close button */
   .close-button {
     position: absolute;
