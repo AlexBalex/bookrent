@@ -1,12 +1,13 @@
 package com.bookrentapp.bookrent.entities;
 
+import java.sql.Clob;
 import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.Lob;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,9 +27,10 @@ public class Book {
     private String year;
     private String pages;
     private String genre;
-    private String description;
+    @Lob
+    private String  description;
 
-    public Book(String title, String author, String year,String pages, String genre, String description) {
+    public Book(String title, String author, String year,String pages, String genre, String  description) {
         this.title = title;
         this.author = author;
         this.year = year;

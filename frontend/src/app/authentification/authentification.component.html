@@ -1,51 +1,61 @@
 <!-- authentification.component.html -->
 <div>
-    <h2>{{ isRegistering ? 'Register' : 'Login' }}</h2>
-    <form *ngIf="!isRegistering; else registerForm">
-      <!-- Existing login form fields -->
-      <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" [(ngModel)]="email" name="email" required />
-      </div>
-  
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" [(ngModel)]="password" name="password" required />
-      </div>
-  
-      <!-- Login Button -->
-      <button type="button" (click)="login()">Login</button>
-  
-      <!-- Register Button -->
-      <button type="button" (click)="toggleRegistration()">Register</button>
+  <h2>{{ isRegistering ? 'Register' : 'Login' }}</h2>
+  <form *ngIf="!isRegistering; else registerForm">
+    <!-- Existing login form fields -->
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" [(ngModel)]="email" name="email" required />
+    </div>
 
-      <button type="button" *ngIf="registerForm" (click)="navigateToHome()">Back</button>
-    </form>
-  
-    <ng-template #registerForm>
-      <!-- Registration Form Fields -->
-      <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" [(ngModel)]="email" name="email" required />
-      </div>
-  
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" [(ngModel)]="password" name="password" required />
-      </div>
-  
-      <div>
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" required />
-      </div>
-  
-      <!-- Register Button -->
-      <button type="button" (click)="register()">Register</button>
-  
-      <!-- Switch to Login Button -->
-      <button type="button" (click)="toggleRegistration()">Login</button>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" [(ngModel)]="password" name="password" required />
+    </div>
 
-      <button type="button" *ngIf="isRegistering" (click)="navigateToHome()">Back</button>
-    </ng-template>
-  </div>
-  
+    <!-- Login Button -->
+    <button type="button" (click)="login()">Login</button>
+
+    <!-- Switch to Register Button -->
+    <button type="button" (click)="toggleRegistration()">Register</button>
+
+    <button type="button" *ngIf="registerForm" (click)="navigateToHome()">Back</button>
+  </form>
+
+  <ng-template #registerForm>
+    <!-- Registration Form Fields -->
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" [(ngModel)]="email" name="email" required />
+    </div>
+
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" [(ngModel)]="password" name="password" required />
+    </div>
+
+    <div>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" required />
+    </div>
+
+    <!-- Display error message for password mismatch -->
+    <div *ngIf="this.password !== this.confirmPassword" style="color: red;">{{ errorMessage }}</div>
+    
+    <!-- Display error message for short password -->
+    <div *ngIf="password.length > 0 && password.length < 8" style="color: red;">Password must be at least 8 characters.</div>
+
+    <!-- Display error for invalid email format -->
+    <div *ngIf="errorMessage && !isValidEmail(email)" style="color: red;">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Register Button -->
+    <button type="button" (click)="register()">Register</button>
+
+    <!-- Switch to Login Button -->
+    <button type="button" (click)="toggleRegistration()">Login</button>
+
+    <button type="button" *ngIf="isRegistering" (click)="navigateToHome()">Back</button>
+  </ng-template>
+</div>

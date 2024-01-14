@@ -15,6 +15,7 @@ export class AuthentificationComponent {
   password: string = '';
   confirmPassword: string = '';
   isRegistering: boolean = false;
+  errorMessage: string = ''; 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -44,6 +45,21 @@ export class AuthentificationComponent {
 
 
   register(): void {
+    if (this.password !== this.confirmPassword) {
+      this.errorMessage = "Password and confirm password do not match.";
+      return;
+    }
+
+    if (this.password.length < 8) {
+      this.errorMessage = 'Password must be at least 8 characters.';
+      return;
+    }
+
+    if (!this.isValidEmail(this.email)) {
+      this.errorMessage = 'Invalid email format.';
+      return;
+    }
+
     const registerDto: RegisterDto = {
       email: this.email,
       password: this.password,
@@ -77,5 +93,10 @@ export class AuthentificationComponent {
 
   navigateToHome(): void {
     this.router.navigate(['/']); // Navigate to the home page
+  }
+
+  isValidEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   }
 }
