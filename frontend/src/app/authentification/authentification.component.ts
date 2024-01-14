@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
 import { LoginDto } from '../interfaces/login-dto';
+import { RegisterDto } from '../interfaces/register-dto';
 
 @Component({
   selector: 'app-authentification',
@@ -43,24 +44,23 @@ export class AuthentificationComponent {
 
 
   register(): void {
-    const registerDto = {
+    const registerDto: RegisterDto = {
       email: this.email,
       password: this.password,
       confirmPassword: this.confirmPassword,
     };
-
-    // Adjust the API endpoint according to your backend structure
-    this.http.post('/api/auth/register', registerDto).subscribe(
-      (response: any) => {
-        // Handle successful registration response
+  
+    this.authService.register(registerDto).subscribe({
+      next: (response: any) => {
         console.log(response);
-        // Redirect to home or perform other actions
+        // Assuming you have a similar setLoggedIn method for registration
+        this.authService.setLoggedIn(true);
+        this.navigateToHome();
       },
-      (error) => {
-        // Handle registration error
+      error: (error) => {
         console.error(error);
-      }
-    );
+      },
+    });
   }
 
   toggleRegistration(): void {

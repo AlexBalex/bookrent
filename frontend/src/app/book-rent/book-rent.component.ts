@@ -1,7 +1,8 @@
 // book-rent.component.ts
-import { Component, Input, Output, EventEmitter} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { throws } from 'assert';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-rent',
@@ -15,24 +16,26 @@ export class BookRentComponent {
   endDate: string = '';
   isAvailabilityChecked: boolean = false;
   availabilityMessage: string = '';
-  constructor(private snackBar: MatSnackBar) {}
+
+  constructor(private snackBar: MatSnackBar, private authService: AuthService, private router: Router) { }
+
   rentBook(): void {
     if (this.book && this.isAvailabilityChecked) {
       // Display a pop-up message with book rental details
-      const message = `You have rented "${this.book.title}" from ${this.startDate} to ${this.endDate}. 
+      if (this.authService.isLoggedIn()) {
+        const message = `You have rented "${this.book.title}" from ${this.startDate} to ${this.endDate}. 
         You can pick up the book from Str Ovidiu 23.`;
 
-      
+        this.snackBar.open(message, 'Close', {
+          verticalPosition: 'top', // Position of the snackbar
+          horizontalPosition: 'center' // Position of the snackbar
+        });
 
-      this.snackBar.open(message, 'Close', {
-        verticalPosition: 'top', // Position of the snackbar
-        horizontalPosition: 'center' // Position of the snackbar
-      });
-
-      // Add your implementation for renting a book, such as updating book status, etc.
-    }
-    else
-    {
+        // Add your implementation for renting a book, such as updating book status, etc.
+      } else {
+        this.router.navigate(['/authentification']);
+      }
+    } else {
       this.availabilityMessage = 'Please press the check button first.';
     }
   }
@@ -50,8 +53,6 @@ export class BookRentComponent {
 
       // Example: Assume availability check logic here
       const isAvailable = this.isDateRangeAvailable(startDateObj, endDateObj);
-
-      
 
       if (endDateObj > startDateObj) {
         if (isAvailable) {

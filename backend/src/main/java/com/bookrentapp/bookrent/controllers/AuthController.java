@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookrentapp.bookrent.dto.request.LoginDto;
+import com.bookrentapp.bookrent.dto.request.RegisterDto;
 import com.bookrentapp.bookrent.dto.response.EmailDto;
 import com.bookrentapp.bookrent.services.UserService;
 
@@ -23,6 +24,16 @@ public class AuthController {
     {
         try {
             EmailDto emailDto = userService.login(loginDto.getEmail(), loginDto.getPassword());
+            return ResponseEntity.ok(emailDto);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody RegisterDto registerDto) {
+        try {
+            EmailDto emailDto = userService.register(registerDto);
             return ResponseEntity.ok(emailDto);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
