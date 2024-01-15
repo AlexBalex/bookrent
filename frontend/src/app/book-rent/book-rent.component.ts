@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./book-rent.component.css']
 })
 export class BookRentComponent {
-  @Input() book: any | null; // Input property to receive the book details
+  @Input() book: any | null; 
   @Output() closePopup = new EventEmitter<void>();
-  startDate: string = ''; // Assuming dates are represented as strings
+  startDate: string = ''; 
   endDate: string = '';
   isAvailabilityChecked: boolean = false;
   availabilityMessage: string = '';
@@ -31,7 +31,6 @@ export class BookRentComponent {
           horizontalPosition: 'center' // Position of the snackbar
         });
 
-        // Add your implementation for renting a book, such as updating book status, etc.
       } else {
         this.router.navigate(['/authentification']);
       }
@@ -47,11 +46,9 @@ export class BookRentComponent {
   checkAvailability(): void {
     // Verify that both start and end dates are not empty
     if (this.startDate && this.endDate) {
-      // Convert dates to JavaScript Date objects
       const startDateObj = new Date(this.startDate);
       const endDateObj = new Date(this.endDate);
 
-      // Example: Assume availability check logic here
       const isAvailable = this.isDateRangeAvailable(startDateObj, endDateObj);
 
       if (endDateObj > startDateObj) {
@@ -71,9 +68,6 @@ export class BookRentComponent {
   }
 
   private isDateRangeAvailable(startDate: Date, endDate: Date): boolean {
-    // Add your availability check logic here
-    // For example, check against a list of booked dates, database, etc.
-    // Return true if available, false otherwise
-    return true; // Placeholder, replace with actual logic
+    return true;
   }
 }

@@ -84,7 +84,6 @@ export class BookListComponent implements OnInit {
   }
 
   checkAvailability(book: any, startDate: string, endDate: string): void {
-    // Implement your logic to check availability
     console.log(`Checking availability for book ${book.title} from ${startDate} to ${endDate}`);
   }
 

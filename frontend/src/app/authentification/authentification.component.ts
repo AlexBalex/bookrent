@@ -69,7 +69,6 @@ export class AuthentificationComponent {
     this.authService.register(registerDto).subscribe({
       next: (response: any) => {
         console.log(response);
-        // Assuming you have a similar setLoggedIn method for registration
         this.authService.setLoggedIn(true);
         this.navigateToHome();
       },
@@ -81,7 +80,6 @@ export class AuthentificationComponent {
 
   toggleRegistration(): void {
     this.isRegistering = !this.isRegistering;
-    // Clear form fields when switching between login and registration
     this.clearFormFields();
   }
 
@@ -92,7 +90,7 @@ export class AuthentificationComponent {
   }
 
   navigateToHome(): void {
-    this.router.navigate(['/']); // Navigate to the home page
+    this.router.navigate(['/']);
   }
 
   isValidEmail(email: string): boolean {

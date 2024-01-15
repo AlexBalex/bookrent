@@ -18,9 +18,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    // @Autowired
-    // private PasswordEncoder passwordEncoder;
-
     public EmailDto login(String email, String password) throws Exception {
         Optional<User> user = userRepository.findByEmail(email);
         if (user.isEmpty())
@@ -43,7 +40,6 @@ public class UserService {
         User newUser = new User();
         newUser.setEmail(registerDto.getEmail());
         newUser.setPassword(registerDto.getPassword());
-        // newUser.setPassword(passwordEncoder.encode(registerDto.getPassword()));
 
         // Save the new user
         userRepository.save(newUser);
