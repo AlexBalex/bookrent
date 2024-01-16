@@ -55,25 +55,7 @@ emailErrorMessage: string = '';
 
 
   register(): void {
-    const registerDto: RegisterDto = {
-      email: this.email,
-      password: this.password,
-      confirmPassword: this.confirmPassword,
-    };
-  
-    this.authService.register(registerDto).subscribe({
-      next: (response: any) => {
-        console.log(response);
-         this.authService.setLoggedIn(true);
-      this.navigateToHome();
-    },
-      error: (error) => {
-      console.error(error);
-      if (error.status === 400) {
-        this.emailInUseErrorMessage = 'Email is already in use. Please use a different email.';
-      }
-      },
-    });
+    
 
     if (this.password !== this.confirmPassword) {
       this.passwordMismatchErrorMessage = "Password and confirm password do not match.";
@@ -90,6 +72,25 @@ emailErrorMessage: string = '';
       return;
     }
 
+    const registerDto: RegisterDto = {
+      email: this.email,
+      password: this.password,
+      confirmPassword: this.confirmPassword,
+    };
+  
+    this.authService.register(registerDto).subscribe({
+      next: (response: any) => {
+        console.log(response);
+         this.authService.setLoggedIn(true);
+      this.navigateToHome();
+    },
+      error: (error) => {
+      console.error(error);
+      if (error.error === "email_already_in_use") {
+        this.emailInUseErrorMessage = 'Email is already in use. Please use a different email.';
+      }
+      },
+    });
   }
 
   toggleRegistration(): void {
