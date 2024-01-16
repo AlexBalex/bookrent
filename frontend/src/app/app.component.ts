@@ -43,7 +43,9 @@ export class AppComponent {
   constructor(private router: Router, public dialog: MatDialog,private authService: AuthService,) {}
 
   searchBooks(query: string): void {
+    if (query.trim() !== ''){
     this.router.navigate(['/book-list', query]);
+    }
   }
   showBookDetails(book: any): void {
     const dialogRef = this.dialog.open(BookDescriptionComponent, {
@@ -60,14 +62,11 @@ export class AppComponent {
   }
 
   isLoggedIn(): boolean {
-    // Implement the logic to check if the user is logged in
     return this.authService.isLoggedIn();
   }
 
   logout(): void {
-    // Implement the logic to handle logout
     this.authService.logout();
-    // You may also want to navigate to the login page or perform other actions
   }
 
   navigateToLogin(): void {

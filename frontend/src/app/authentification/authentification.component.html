@@ -13,6 +13,12 @@
       <input type="password" id="password" [(ngModel)]="password" name="password" required />
     </div>
 
+    <!-- Display error message for wrong password -->
+    <div *ngIf="passwordErrorMessage" style="color: red;">{{ passwordErrorMessage }}</div>
+
+    <!-- Display error message for user not found -->
+    <div *ngIf="emailErrorMessage" style="color: red;">{{ emailErrorMessage }}</div>
+
     <!-- Login Button -->
     <button type="button" (click)="login()">Login</button>
 
@@ -40,15 +46,16 @@
     </div>
 
     <!-- Display error message for password mismatch -->
-    <div *ngIf="this.password !== this.confirmPassword" style="color: red;">{{ errorMessage }}</div>
-    
+    <div *ngIf="this.password !== this.confirmPassword" style="color: red;">{{ passwordMismatchErrorMessage }}</div>
+
     <!-- Display error message for short password -->
-    <div *ngIf="password.length > 0 && password.length < 8" style="color: red;">Password must be at least 8 characters.</div>
+    <div *ngIf="password.length > 0 && password.length < 8" style="color: red;">{{ shortPasswordErrorMessage }}</div>
 
     <!-- Display error for invalid email format -->
-    <div *ngIf="errorMessage && !isValidEmail(email)" style="color: red;">
-      {{ errorMessage }}
-    </div>
+    <div *ngIf="invalidEmailErrorMessage && !isValidEmail(email)" style="color: red;">{{ invalidEmailErrorMessage }}</div>
+
+    <!-- Display error for email already in use -->
+    <div *ngIf="emailInUseErrorMessage" style="color: red;">{{ emailInUseErrorMessage }}</div>
 
     <!-- Register Button -->
     <button type="button" (click)="register()">Register</button>

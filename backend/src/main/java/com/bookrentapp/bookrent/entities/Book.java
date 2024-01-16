@@ -1,6 +1,5 @@
 package com.bookrentapp.bookrent.entities;
 
-import java.sql.Clob;
 import java.util.UUID;
 
 import jakarta.persistence.Entity;

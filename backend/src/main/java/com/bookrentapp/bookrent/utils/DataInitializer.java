@@ -1,6 +1,5 @@
 package com.bookrentapp.bookrent.utils;
 
-import java.sql.Clob;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,8 +21,6 @@ public class DataInitializer implements CommandLineRunner {
 
     @Autowired
     private BookRepository bookRepository;
-    // @Autowired
-    // private PasswordEncoder passwordEncoder;
 
     @Override
     public void run(String... args) throws Exception {
@@ -35,10 +32,8 @@ public class DataInitializer implements CommandLineRunner {
     private void initializeUsers() {
         // Check if users already exist
         if (userRepository.count() == 0) {
-            // Create and save sample users
             createUser("user1@mail.com", "p1");
             createUser("user2@mail.com", "p2");
-            // Add more users as needed
         }
     }
 

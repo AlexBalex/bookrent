@@ -15,7 +15,12 @@ export class AuthentificationComponent {
   password: string = '';
   confirmPassword: string = '';
   isRegistering: boolean = false;
-  errorMessage: string = ''; 
+  passwordMismatchErrorMessage: string = '';
+  shortPasswordErrorMessage: string = '';
+  invalidEmailErrorMessage: string = '';
+  emailInUseErrorMessage: string = '';
+  passwordErrorMessage: string = '';
+emailErrorMessage: string = '';
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -39,27 +44,17 @@ export class AuthentificationComponent {
       },
       error: (error) => {
         console.error(error);
+        if (error.error === "wrong_password") {
+          this.passwordErrorMessage = 'Invalid password. Please try again.';
+        } else if (error.error === "user_not_found") {
+          this.emailErrorMessage = 'Mail not found. Please check your email and try again.';
+        }
       },
     });
   }
 
 
   register(): void {
-    if (this.password !== this.confirmPassword) {
-      this.errorMessage = "Password and confirm password do not match.";
-      return;
-    }
-
-    if (this.password.length < 8) {
-      this.errorMessage = 'Password must be at least 8 characters.';
-      return;
-    }
-
-    if (!this.isValidEmail(this.email)) {
-      this.errorMessage = 'Invalid email format.';
-      return;
-    }
-
     const registerDto: RegisterDto = {
       email: this.email,
       password: this.password,
@@ -69,13 +64,32 @@ export class AuthentificationComponent {
     this.authService.register(registerDto).subscribe({
       next: (response: any) => {
         console.log(response);
-        this.authService.setLoggedIn(true);
-        this.navigateToHome();
-      },
+         this.authService.setLoggedIn(true);
+      this.navigateToHome();
+    },
       error: (error) => {
-        console.error(error);
+      console.error(error);
+      if (error.status === 400) {
+        this.emailInUseErrorMessage = 'Email is already in use. Please use a different email.';
+      }
       },
     });
+
+    if (this.password !== this.confirmPassword) {
+      this.passwordMismatchErrorMessage = "Password and confirm password do not match.";
+      return;
+    }
+    
+    if (this.password.length < 8) {
+      this.shortPasswordErrorMessage = 'Password must be at least 8 characters.';
+      return;
+    }
+    
+    if (!this.isValidEmail(this.email)) {
+      this.invalidEmailErrorMessage = 'Invalid email format.';
+      return;
+    }
+
   }
 
   toggleRegistration(): void {

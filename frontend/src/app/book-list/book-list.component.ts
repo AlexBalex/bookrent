@@ -22,6 +22,7 @@ export class BookListComponent implements OnInit {
     this.route.paramMap.subscribe({
       next: params => {
         const query = params.get('filter');
+        console.log(query)
         if(query!==null){
           this.searchTerm = query;
           this.search();
@@ -37,14 +38,14 @@ export class BookListComponent implements OnInit {
   fetchBooks(): void {
     this.bookService.getBooks().subscribe((books) => {
       this.books = books;
-      console.log(books);
+
+      this.search();
     });
   }
-
+  
   search(): void {
     if(this.searchTerm==="")
       return;
-    console.log(this.books);
     this.filteredBooks = this.books.filter(book =>
       book.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
       book.author.toLowerCase().includes(this.searchTerm.toLowerCase())
