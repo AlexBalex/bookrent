@@ -35,8 +35,6 @@ export class AuthService {
 
   // Logout method
   logout(): void {
-    // You can perform any necessary cleanup or additional actions here
-    // For simplicity, just update the isLoggedIn state
     this.LoggedIn = false;
   }
 

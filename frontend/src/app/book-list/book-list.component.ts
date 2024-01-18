@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { BookDescriptionComponent } from '../book-description/book-description.component';
 import { BookService } from '../services/book.service';
-import { Console } from 'console';
 
 @Component({
   selector: 'app-book-list',
@@ -46,10 +45,12 @@ export class BookListComponent implements OnInit {
   search(): void {
     if(this.searchTerm==="")
       return;
-    this.filteredBooks = this.books.filter(book =>
-      book.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      book.author.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
+    this.filteredBooks = this.books.filter(book =>{
+      const titleMatches = book.title && book.title.toLowerCase().includes(this.searchTerm.toLowerCase());
+      const authorMatches = book.author && book.author.toLowerCase().includes(this.searchTerm.toLowerCase());
+  
+      return titleMatches || authorMatches;
+    });
   }
 
   goBack(): void {
